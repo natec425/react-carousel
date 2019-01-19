@@ -15,7 +15,7 @@ const shouldBeHidden = (childIndex, selectedIndex) => {
 }
 
 
-const modifiers = (childIndex, selectedIndex) => {
+const childModifiers = (childIndex, selectedIndex) => {
     const applicableModifiers = [];
     if (shouldBeHidden(childIndex, selectedIndex))
         applicableModifiers.push('hidden');
@@ -33,7 +33,7 @@ const Carousel = props => {
         <div className="carousel">
             <div className="carousel__children-container">
                 {props.children.map((child, i) =>
-                    <div className={`carousel__child ${modifiers(i, selectedChild)}`} >
+                    <div className={`carousel__child ${childModifiers(i, selectedChild)}`} >
                         {child}
                     </div>)}
             </div>
