@@ -1,9 +1,43 @@
 .carousel {
     display: inline-flex;
-    padding: 1rem;
+    flex-direction: column;
 
     border: 2px solid rgba(225, 225, 225, .7);
     border-radius: 7px;
 
     box-shadow: 0 3px 5px rgba(230, 230, 230, .7);
+
+    width: 300px;
+    height: 200px;
+
+    overflow: hidden;
+}
+
+.carousel__children-container {
+    flex: 1;
+    position: relative;
+    padding: 1rem;
+
+    background-color: rgba(100, 100, 100, .3);
+}
+
+.carousel__child {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    transition: transform .3s linear;
+}
+
+.carousel__child--left {
+    transform: translateX(-150%);
+}
+
+.carousel__child--right {
+    transform: translateX(150%);
+}
+
+.carousel__child--hidden {
+    display: none;
 }
