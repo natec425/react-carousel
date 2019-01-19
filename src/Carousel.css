@@ -1,0 +1,9 @@
+.carousel {
+    display: inline-flex;
+    padding: 1rem;
+
+    border: 2px solid rgba(225, 225, 225, .7);
+    border-radius: 7px;
+
+    box-shadow: 0 3px 5px rgba(230, 230, 230, .7);
+}
