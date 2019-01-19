@@ -41,3 +41,17 @@
 .carousel__child--hidden {
     display: none;
 }
+
+.carousel__selectors-container {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel__selector {
+    display: block;
+    border: 1px solid rgb(200, 200, 200, .5);
+    width: 15px;
+    height: 15px;
+    margin: 15px;
+    border-radius: 50%;
+}

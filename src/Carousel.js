@@ -27,8 +27,8 @@ const Carousel = props => {
                     </div>)}
             </div>
             <div className="carousel__selectors-container">
-                <button onClick={() => setSelectedChild(selectedChild - 1)}>Previous</button>
-                <button onClick={() => setSelectedChild(selectedChild + 1)}>Next</button>
+                {props.children.map((_child, i) =>
+                    <button className="carousel__selector" onClick={() => setSelectedChild(i)}></button>)}
             </div>
         </div>
     );
