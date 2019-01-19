@@ -25,6 +25,13 @@ const childModifiers = (childIndex, selectedIndex) => {
     return applicableModifiers.map(modifier => `carousel__child--${modifier}`).join(' ')
 }
 
+const selectorModifiers = (selectorIndex, selectedIndex) => {
+    if (selectorIndex === selectedIndex)
+        return 'carousel__selector--active';
+    else
+        return '';
+}
+
 const Carousel = props => {
 
     const [selectedChild, setSelectedChild] = useState(0);
@@ -39,9 +46,9 @@ const Carousel = props => {
             </div>
             <div className="carousel__selectors-container">
                 {props.children.map((_child, i) =>
-                    <button className="carousel__selector" onClick={() => setSelectedChild(i)}></button>)}
+                    <button className={`carousel__selector ${selectorModifiers(i, selectedChild)}`} onClick={() => setSelectedChild(i)}></button>)}
             </div>
-        </div>
+        </div >
     );
 }
 
