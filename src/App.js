@@ -6,9 +6,10 @@ class App extends Component {
     return (
       <div>
         <Carousel>
-          <p>Child 1</p>
-          <p>Child 2</p>
-          <p>Child 3</p>
+          <p style={{ fontSize: '3rem' }}>Child 1</p>
+          <p style={{ fontSize: '3rem' }}>Child 2</p>
+          <p style={{ fontSize: '3rem' }}>Child 3</p>
+          <p style={{ fontSize: '3rem' }}>Child 4</p>
         </Carousel>
       </div>
     );

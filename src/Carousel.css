@@ -27,7 +27,8 @@
     display: inline-block;
     margin: 0;
     padding: 0;
-    transition: transform .3s linear;
+    transition: transform .3s linear,
+                opacity .3s linear;
 }
 
 .carousel__child--left {
@@ -39,7 +40,7 @@
 }
 
 .carousel__child--hidden {
-    display: none;
+    opacity: 0;
 }
 
 .carousel__selectors-container {

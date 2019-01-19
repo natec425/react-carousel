@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import './Carousel.css';
 
-const modifier = (childIndex, selectedIndex) => {
-    switch (childIndex - selectedIndex) {
-        case 0:
-            return 'center';
-        case -1:
-            return 'left';
-        case 1:
-            return 'right';
-        default:
-            return 'hidden';
-    }
+const directionModifier = (childIndex, selectedIndex) => {
+    if (childIndex < selectedIndex)
+        return 'left';
+    else if (childIndex > selectedIndex)
+        return 'right';
+    else
+        return 'center';
+}
+
+const shouldBeHidden = (childIndex, selectedIndex) => {
+    return Math.abs(childIndex - selectedIndex) > 1;
+}
+
+
+const modifiers = (childIndex, selectedIndex) => {
+    const applicableModifiers = [];
+    if (shouldBeHidden(childIndex, selectedIndex))
+        applicableModifiers.push('hidden');
+
+    applicableModifiers.push(directionModifier(childIndex, selectedIndex))
+
+    return applicableModifiers.map(modifier => `carousel__child--${modifier}`).join(' ')
 }
 
 const Carousel = props => {
@@ -22,7 +33,7 @@ const Carousel = props => {
         <div className="carousel">
             <div className="carousel__children-container">
                 {props.children.map((child, i) =>
-                    <div className={`carousel__child carousel__child--${modifier(i, selectedChild)}`} >
+                    <div className={`carousel__child ${modifiers(i, selectedChild)}`} >
                         {child}
                     </div>)}
             </div>
