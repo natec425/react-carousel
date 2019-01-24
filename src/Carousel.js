@@ -42,7 +42,18 @@ const Carousel = props => {
             <div className="carousel__children-container"
                 onTouchStart={evt => setDrag({ startX: evt.touches[0].pageX })}
                 onTouchMove={evt => setDrag(Object.assign({}, drag, { endX: evt.touches[0].pageX }))}
-                onTouchEnd={evt => { setDrag(null); console.log('down') }}
+                onTouchEnd={evt => {
+                    if (drag.startX - drag.endX > 150) {
+                        setSelectedChild(
+                            Math.min(props.children.length - 1,
+                                selectedChild + 1))
+                    } else if (drag.endX - drag.startX > 150) {
+                        setSelectedChild(
+                            Math.max(0, selectedChild - 1))
+                    }
+                    setDrag(null);
+
+                }}
                 style={drag ? { transform: `translateX(${-(drag.startX - drag.endX)}px)` } : {}}>
                 {props.children.map((child, i) =>
                     <div key={i} className={`carousel__child ${childModifiers(i, selectedChild)}`} >
@@ -51,7 +62,9 @@ const Carousel = props => {
             </div>
             <div className="carousel__selectors-container">
                 {props.children.map((_child, i) =>
-                    <button key={i} className={`carousel__selector ${selectorModifiers(i, selectedChild)}`} onClick={() => setSelectedChild(i)}></button>)}
+                    <button key={i}
+                        className={`carousel__selector ${selectorModifiers(i, selectedChild)}`}
+                        onClick={() => setSelectedChild(i)}></button>)}
             </div>
         </div >
     );
