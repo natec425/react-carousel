@@ -19,6 +19,8 @@
     padding: 1rem;
 
     background-color: rgba(100, 100, 100, .3);
+
+    transition: transform .2s ease-out;
 }
 
 .carousel__child {
